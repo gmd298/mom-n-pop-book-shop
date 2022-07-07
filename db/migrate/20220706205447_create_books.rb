@@ -4,8 +4,9 @@ class CreateBooks < ActiveRecord::Migration[7.0]
       t.string :title
       t.integer :quantity
       t.string :description
-      t.integer :store_id
+      t.string :image
       t.integer :author_id
+      t.integer :store_id
       t.timestamps
     end
   end

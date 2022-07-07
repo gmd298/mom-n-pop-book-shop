@@ -1,12 +1,13 @@
 class BooksController < ApplicationController
 
   def index 
-    render json: Book.all
+    book = Book.all
+    render json: book
   end
 
   def show
-    author = Book.find(params[:id])
-    render json: author 
+    book = Book.find(params[:id])
+    render json: book 
   end
 
   def create 
