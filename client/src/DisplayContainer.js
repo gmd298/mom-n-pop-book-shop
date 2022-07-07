@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import BookCard from './BookCard';
+import BookCard from './components/Books/BookCard';
+
+// axios for fetch
 
 function DisplayContainer() {
   const [books, setBooks] = useState([])
@@ -9,7 +11,7 @@ function DisplayContainer() {
   useEffect(() => {
     fetchBooks();
     fetchAuthors();
-    fetchGenres();
+    // fetchGenres();
   }, [])
 
 // fetching data
@@ -39,12 +41,15 @@ function DisplayContainer() {
       <h1>
         Book Shop
       </h1>
+      <div className="card-container">
       { books.map(book => {
         return <BookCard 
+          key={book.id}
           book={book} 
           fetchBooks={fetchBooks}
           fetchAuthors={fetchAuthors} />
       })  }
+      </div>
     </div>
       
     </>

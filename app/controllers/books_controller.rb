@@ -1,8 +1,13 @@
 class BooksController < ApplicationController
 
+  # RESTful --- CRUD methods
+  # 10 queries for all authors for bookx + 1 queyr for book
+  # N + 1 query
+
   def index 
-    book = Book.all
-    render json: book
+    # custom class method or instance method in model?
+    books = Book.includes(:author).all.limit(params[:limit])
+    render json: books
   end
 
   def show
@@ -11,8 +16,11 @@ class BooksController < ApplicationController
   end
 
   def create 
-    book = Book.create!(book_params)
-    render json: book, status: :created
+    #ActiveRecord::Base.transaction do
+    #  author = Author.create!(author_params)
+      @book = Book.create!(book_params)   
+    #end
+    render json: @book, status: :created
   end
       # How would I create a new book AND a new author?
 

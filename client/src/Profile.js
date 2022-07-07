@@ -5,6 +5,9 @@ import Login from './Login';
 function Profile() {
   const user = useSelector((state) => state.user.value);
   const themeColor = useSelector((state) => state.theme.value);
+
+  console.log('themeColor', themeColor);
+
   return (
     <div>
       <Login />

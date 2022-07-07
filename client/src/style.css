@@ -1,0 +1,18 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.card-container {
+  display: flex;
+  flex-direction: row;
+  order: 4;
+}
+.card {
+  order: 5;
+} 
+/* .card-content {
+  display: flex;
+  flex-direction: horizontal;
+  order: 4;
+} */
