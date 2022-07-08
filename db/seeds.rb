@@ -19,7 +19,7 @@ end
     title: Faker::Book.title,
     quantity: rand(0..20),
     description: Faker::Lorem.paragraph(sentence_count: 3),
-    image: Faker::LoremFlickr.image(size: "150x300"),
+    image: Faker::LoremFlickr.image(size: "200x300"),
     author_id: rand(1..150),
     store_id: 1
   )

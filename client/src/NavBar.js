@@ -20,13 +20,13 @@ function NavBar() {
       </header> */}
       <Link to="/" className="site-title"> Mom'n Pop Book Shop </Link>
       <ul>
-        <li>
-          <Link to="/bookshop"> Bookshop </Link>
+        <li className="nav-item">
+          <Link to="/books"> Books </Link>
         </li>
-        <li>
+        <li className="nav-item">
           <Link to="/profile"> Profile </Link> 
         </li>
-        <li>
+        <li className="nav-item">
           <Link to="/login"> Login </Link> 
         </li>
       </ul>

@@ -39,7 +39,7 @@ function DisplayContainer() {
     <>
     <div>
       <h1>
-        Book Shop
+        Conditionally render title
       </h1>
       <div className="card-container">
       { books.map(book => {

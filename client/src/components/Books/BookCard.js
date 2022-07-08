@@ -15,16 +15,16 @@ function BookCard({ book, handleDelete, fetchBooks, fetchAuthors }) {
 
 
   return (
-      <span className="card">
+      <div className="card">
         <div className="card-content">
-          <h2 className="card-title">{book.title}</h2>
-          <img src={book.image} alt={book.image} />
-          <h4>{book.author.name}</h4>
+          <h3 className="card-title">{book.title}</h3>
+          <img src={book.image} alt={book.image} className="card-image"/>
+          <h4 className="card-author">{book.author.name}</h4>
           <p className="card-details">{book.description}</p>
+          <button className="card-button" type='submit' onClick={onClick}>Delete</button>
         </div>
-        <button type='submit' onClick={onClick}>Delete</button>
         {/* <p>{statusMessage}</p> */}
-      </span>
+      </div>
   )
 }
 
