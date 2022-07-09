@@ -6,7 +6,8 @@ class BooksController < ApplicationController
 
   def index 
     # custom class method or instance method in model?
-    books = Book.includes(:author).all.limit(params[:limit])
+    books = Book.all.order(id: :desc).limit(params[:limit])
+    books = books.where("id < ?", params[:cursor]) if params[:cursor]
     render json: books
   end
 
@@ -32,6 +33,13 @@ class BooksController < ApplicationController
       render json: {status: "ERROR", message: "Book not updated", data:book.errors}, status: :unprocessable_entity
     end
   end
+
+  def featured
+    books = Book.all
+    featured_books = 4.times.map { books.sample }
+    render json: featured_books, status: :ok
+  end
+
         # Are these right? ^v
   def update_book_quantity
     book = Book.find(params[:id])

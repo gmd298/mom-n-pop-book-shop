@@ -4,16 +4,24 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 
 import BookCard from './BookCard';
+import FeaturedBooks from './FeaturedBooks';
+
+// cursor pagination [6,5,4], [3,2,1] 
+// offset pagination
 
 function Books() {
-  const [books, setBooks] = useState([])
+  const [books, setBooks] = useState([]);
+  const [cursor, setCursor] = useState();
 
   // fetching data
-  const fetchBooks = () => {
-    axios.get("/books?limit=10")
+  const fetchBooks = (cursor = undefined) => {
+    axios.get("/books",  { params: { limit: 10, cursor } })
     .then((res) => {
       console.log('books >>>>', res.data)
-      setBooks(res.data);
+      setBooks((state) => {
+        return [ ...state, ...res.data]
+      });
+      setCursor(res.data[res.data.length - 1].id);
     });
   }
   
@@ -32,19 +40,24 @@ function Books() {
       return ary
     }
 
+  const onLoadMore = () => {
+    fetchBooks(cursor)
+  }
+
   return (
     <>
-    <div>
-      <h1>
-        Book Shop
-      </h1>
-      <div className="card-container">
-      { renderBooks().map(bookAry => {
-        return <div>{bookAry}</div>
-      })  }
+      <div>
+        <h1>
+          Book Shop
+        </h1>
+        <div >
+        { renderBooks().map(bookAry => {
+          return <div className="card-container">{bookAry}</div>
+        })  }
+        </div>
+        <div onClick={onLoadMore}>load more</div>        
       </div>
-    </div>
-      
+      <FeaturedBooks />
     </>
   )
 }

@@ -10,21 +10,39 @@
 .nav {
   display: flex;
 }
+.site-title {
+  padding: 50px;
+  transition: transform .2s;
+  width: 200px;
+  height: 100px;
+  margin: 0 auto;
+}
+.site-title:hover{
+  transform: scale(1.5);
+}
+.nav-list {
+  display: flex;
+  align-items: center;
+  max-width: 720px;
+  list-style: none;
+}
 .nav-item {
   width: 125px;
   height: 50px;
-
-
+  transition: background-position-x 0.9s linear;
+  text-align: center;
+  transition: transform .2s;
+}
+.nav-item:hover{
+  transform: scale(1.5);
 }
 
 .card-container {
-  /* display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); */
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(333px, 1fr));
   grid-gap: 5px;
   box-sizing: border-box;
-  height: 200px;
+  /* height: 200px; */
   width: 100%;
   padding: 10px;
 }

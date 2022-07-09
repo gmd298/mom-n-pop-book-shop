@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   resources :stores
-  resources :books
+  resources :books do 
+    get :featured, on: :collection
+  end
+
   resources :authors
   resources :genres, only: [:index, :show]
 

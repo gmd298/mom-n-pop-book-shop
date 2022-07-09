@@ -2,25 +2,26 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import NavBar from "./NavBar";
 import Profile from "./Profile";
-import Login from "./Login";
-import ChangeColor from "./ChangeColor";
-import DisplayContainer from "./DisplayContainer";
+// import ChangeColor from "./ChangeColor";
+import Home from "./Home";
 import Books from "./components/Books/Books";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
+import Author from "./Author";
+import Cart from "./Cart";
 
 function App() {
-  const theme = useSelector(state => state.theme.value);
+  // const theme = useSelector(state => state.theme.value);
 
   return (
     <BrowserRouter>
       <div className="App" /*style={{ backgroundColor: theme}} */>
         <NavBar />
-        <ChangeColor />
         <Routes>
-          <Route exact path= {"/"} element= {<DisplayContainer />} />
+          <Route exact path= {"/"} element= {<Home />} />
           <Route exact path= {"/books"} element= {<Books />} />
+          <Route exact path= {"/author"} element= {<Author />} />
           <Route exact path= {"/profile"} element= {<Profile />} />
-          <Route exact path= {"/login"} element= {<Login />} />
+          <Route exact path= {"/cart"} element= {<Cart />} />
         </Routes>
       </div>
       </BrowserRouter>

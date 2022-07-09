@@ -21,9 +21,9 @@ function BookCard({ book, handleDelete, fetchBooks, fetchAuthors }) {
           <img src={book.image} alt={book.image} className="card-image"/>
           <h4 className="card-author">{book.author.name}</h4>
           <p className="card-details">{book.description}</p>
-          <button className="card-button" type='submit' onClick={onClick}>Delete</button>
+          <button className="card-button" type='submit' onClick={onClick}>Add To Cart</button>
+          <button className="card-button" type='submit' onClick={onClick}>Add To Wishlist</button>
         </div>
-        {/* <p>{statusMessage}</p> */}
       </div>
   )
 }

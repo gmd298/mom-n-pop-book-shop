@@ -19,15 +19,18 @@ function NavBar() {
         <button onClick={handleLogout}>Logout</button>
       </header> */}
       <Link to="/" className="site-title"> Mom'n Pop Book Shop </Link>
-      <ul>
+      <ul className="nav-list">
         <li className="nav-item">
           <Link to="/books"> Books </Link>
+        </li>
+        <li className="nav-item">
+          <Link to="/author"> Author </Link> 
         </li>
         <li className="nav-item">
           <Link to="/profile"> Profile </Link> 
         </li>
         <li className="nav-item">
-          <Link to="/login"> Login </Link> 
+          <Link to="/cart"> Cart </Link> 
         </li>
       </ul>
     </nav>
