@@ -55,7 +55,7 @@ function Books() {
           return <div className="card-container">{bookAry}</div>
         })  }
         </div>
-        <div onClick={onLoadMore}>load more</div>        
+        <div className='div-button' onClick={onLoadMore}>load more</div>        
       </div>
       <FeaturedBooks />
     </>

@@ -19,7 +19,7 @@ const FeaturedBooks = () => {
   
   return (
     <>
-      <div>FeaturedBooks</div>
+      <h2 className='featured-books'>FeaturedBooks</h2>
       <div className="card-container">
         {featuredBooks.map(book => {
           return <BookCard key={book.id} book={book} />

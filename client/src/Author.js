@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import axios from 'axios';
+import FeaturedBooks from './components/Books/FeaturedBooks';
 
 
 function Author() {
@@ -31,6 +32,7 @@ function Author() {
         </div>
         {/* <p>{statusMessage}</p> */}
       </div>
+      <FeaturedBooks />
     </div>
   </>
   )

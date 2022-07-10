@@ -3,6 +3,7 @@ import {useSelector} from 'react-redux';
 import axios from 'axios';
 import Login from './Login';
 import BookCard from './components/Books/BookCard';
+import FeaturedBooks from './components/Books/FeaturedBooks';
 
 function Profile() {
   const user = useSelector((state) => state.user.value);
@@ -48,6 +49,7 @@ function Profile() {
         return <div>{bookAry}</div>
       })  }
       </div>
+      <FeaturedBooks />
     </div>
   )
 }
