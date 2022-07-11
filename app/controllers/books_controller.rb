@@ -5,10 +5,15 @@ class BooksController < ApplicationController
   # N + 1 query
 
   def index 
-    # custom class method or instance method in model?
-    books = Book.all.order(id: :desc).limit(params[:limit])
-    books = books.where("id < ?", params[:cursor]) if params[:cursor]
-    render json: books
+    if 
+      params[:featured]
+      featured = featured_books
+      render json: featured
+    else
+      books = Book.custom_order(:id).limit(params[:limit])
+      books = books.where("id < ?", params[:cursor]) if params[:cursor]
+      render json: books
+    end
   end
 
   def show
@@ -34,22 +39,6 @@ class BooksController < ApplicationController
     end
   end
 
-  def featured
-    books = Book.all
-    featured_books = 4.times.map { books.sample }
-    render json: featured_books, status: :ok
-  end
-
-        # Are these right? ^v
-  def update_book_quantity
-    book = Book.find(params[:id])
-    if book.update_attributes(book_quantity)
-      render json: {status: "SUCCESS", message: "Quantity updated successfully", data:book}, status: :ok
-    else
-      render json: {status: "ERROR", message: "Quantity not updated", data:book.errors}, status: :unprocessable_entity
-    end
-  end
-
   def destroy
     book = Book.find(params[:id])
     book.destroy
@@ -68,6 +57,12 @@ class BooksController < ApplicationController
 
   def book_quantity
     params.permit(:quantity)
+  end
+
+  def featured_books
+    # books = Book.all
+    # featured_books = 4.times.map { books.sample }
+    Book.custom_order(:quantity).limit(4)
   end
 
 end

@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   resources :stores
-  resources :books do 
-    get :featured, on: :collection
-  end
+  resources :books 
+  get '/:featured/books', to: 'books#index'
+  # do 
+  #   get :featured, on: :collection
+  # end
 
   resources :authors
   resources :genres, only: [:index, :show]

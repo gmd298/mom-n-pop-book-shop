@@ -6,8 +6,8 @@ const allBooksSlice = createSlice({
   name: 'allBooks',
   initialState,
   reducers: {
-    setFeaturedBooks: (state, action) => {
-      state.featuredBooks = action.payload;
+    setAllBooks: (state, action) => {
+      state.allBooks = action.payload;
     },
   }
 });

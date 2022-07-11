@@ -5,7 +5,7 @@ class Book < ApplicationRecord
   has_many :book_genres
   has_many :genres, through: :book_genres
 
-  def height
-    20
+  def self.custom_order(column_name)
+    self.order(column_name => :desc)
   end
 end

@@ -1,5 +1,5 @@
 class BookSerializer < ActiveModel::Serializer
-  attributes :id, :title, :description, :image, :height
+  attributes :id, :title, :description, :image
 
   belongs_to :author
   #belongs_to :store
