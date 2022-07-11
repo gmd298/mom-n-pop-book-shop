@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-const initialState = { featuredBooks: [] }; //not finished yet
+const initialState = { featuredBooks: [] }; 
 
 const featuredBooksSlice = createSlice({
   name: 'featuredBooks',

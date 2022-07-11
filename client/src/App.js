@@ -8,6 +8,7 @@ import Books from "./components/Books/Books";
 // import { useSelector } from "react-redux";
 import Author from "./Author";
 import Cart from "./Cart";
+import AllBooks from "./components/AllBooks";
 
 function App() {
   // const theme = useSelector(state => state.theme.value);
@@ -22,6 +23,7 @@ function App() {
           <Route exact path= {"/author"} element= {<Author />} />
           <Route exact path= {"/profile"} element= {<Profile />} />
           <Route exact path= {"/cart"} element= {<Cart />} />
+          <Route exact path= {"/allbooks"} element= {<AllBooks />} />
         </Routes>
       </div>
       </BrowserRouter>

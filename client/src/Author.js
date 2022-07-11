@@ -1,11 +1,16 @@
 import React, {useState} from 'react'
 import axios from 'axios';
 import FeaturedBooks from './components/Books/FeaturedBooks';
+import allBooks from './slices/allBooks';
+import { useDispatch, useSelector } from 'react-redux';
+import SearchBar from './SearchBar';
 
+// do I need useSelector?
 
 function Author() {
-  const [author, setAuthor] = useState({})
+  const [author, setAuthor] = useState({}) // refactor to use redux. allBooks.author.name?
 
+  const dispatch = useDispatch()
 
   /// fetch for search function?
   const fetchAuthor = () => {
@@ -15,8 +20,7 @@ function Author() {
   });
 }
 
-/// dont think I need an author card, but I do think I will need book cards if
-/// I want to show books by the author. 
+// how do I access individual author from redux? 
 
   return (
     <>
@@ -24,6 +28,7 @@ function Author() {
       <h1>
         Author Page
       </h1>
+      <SearchBar />
       <div className="card">
         <div className="card-content">
           <h3 className="card-title">{author.name}</h3>

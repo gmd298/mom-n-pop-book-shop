@@ -2,6 +2,7 @@
 // import PropTypes from 'prop-types' TODO
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import SearchBar from '../../SearchBar';
 
 import BookCard from './BookCard';
 import FeaturedBooks from './FeaturedBooks';
@@ -50,6 +51,7 @@ function Books() {
         <h1>
           Book Shop
         </h1>
+        <SearchBar />
         <div >
         { renderBooks().map(bookAry => {
           return <div className="card-container">{bookAry}</div>

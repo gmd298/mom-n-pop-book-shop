@@ -10,7 +10,10 @@ function SearchBar() {
     })
     setListings(filteredListings)
   }
-///////////// How do I handle the search? Do I need to include multiple fetch requests? Do I need to have unique search functions for Books and Authors?
+
+// How do I handle the search? Do I need to include multiple fetch requests? 
+// How can I use this in Books.js AND Authors.js?
+
   // useEffect(() => {
   //   fetch('http://localhost:6001/listings')
   //   .then(response => response.json())
@@ -29,7 +32,7 @@ function SearchBar() {
       <input
         type="text"
         id="search"
-        placeholder="search free stuff"
+        placeholder="search..."
         value={search}
         onChange={handleOnChange}
       />
