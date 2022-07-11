@@ -1,7 +1,9 @@
 class AuthorsController < ApplicationController
 
   def index 
-    render json: Author.all
+    authors = Author.all.limit(params[:limit])
+    authors = authors.where("id < ?", params[:cursor]) if params[:cursor]
+    render json: authors
   end
 
   def show

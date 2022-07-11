@@ -1,7 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function NavBar() {
+
+  const featuredBooks = useSelector(state => state.featuredBooks.featuredBooks)
+
   // const navigate = useNavigate();
 
   // // function handleLogout() {
@@ -19,12 +23,18 @@ function NavBar() {
         <button onClick={handleLogout}>Logout</button>
       </header> */}
       <Link to="/" className="site-title"> Mom'n Pop Book Shop </Link>
+      
       <ul className="nav-list">
+      <li className="nav-item">
+        {featuredBooks.length > 0 && 
+          <div>{featuredBooks.length} new featured books!!</div>
+        }
+        </li>
         <li className="nav-item">
           <Link to="/books"> Books </Link>
         </li>
         <li className="nav-item">
-          <Link to="/author"> Author </Link> 
+          <Link to="/authors"> Authors </Link> 
         </li>
         <li className="nav-item">
           <Link to="/profile"> Profile </Link> 

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function BookCard({ book, handleDelete, fetchBooks, fetchAuthors }) {
 
@@ -15,6 +16,7 @@ function BookCard({ book, handleDelete, fetchBooks, fetchAuthors }) {
 
 
   return (
+    <Link to={`/books/${book.id}`}>
       <div className="card">
         <div className="card-content">
           <h3 className="card-title">{book.title}</h3>
@@ -25,6 +27,7 @@ function BookCard({ book, handleDelete, fetchBooks, fetchAuthors }) {
           <button className="card-button" type='submit' onClick={onClick}>Add To Wishlist</button>
         </div>
       </div>
+      </Link>
   )
 }
 

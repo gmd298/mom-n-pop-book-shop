@@ -5,7 +5,7 @@
   text-align: center;
   width: 100vw;
   min-height: 5000vh;
-  background-color: slategrey;
+  background-color: rgb(210, 232, 255);
 }
 .nav {
   display: flex;

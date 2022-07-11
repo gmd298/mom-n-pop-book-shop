@@ -1,25 +1,26 @@
-import React, {useState} from 'react'
 import axios from 'axios';
-import FeaturedBooks from './components/Books/FeaturedBooks';
-import allBooks from './slices/allBooks';
-import { useDispatch, useSelector } from 'react-redux';
-import SearchBar from './SearchBar';
+import { useParams } from 'react-router-dom';
+import React, {useEffect, useState} from 'react'
+
+import SearchBar from '../../SearchBar';
+import FeaturedBooks from '../Books/FeaturedBooks';
 
 // do I need useSelector?
 
 function Author() {
+  const params = useParams();
+
+  console.log('params', params);
+
   const [author, setAuthor] = useState({}) // refactor to use redux. allBooks.author.name?
 
-  const dispatch = useDispatch()
-
-  /// fetch for search function?
-  const fetchAuthor = () => {
-    axios.get(`/author/${author.id}`)
-    .then((res) => {
-      setAuthor(res.data);
-  });
-}
-
+  useEffect(() => {
+    axios.get(`/authors/${params.id}`)
+      .then((res) => {
+        setAuthor(res.data);
+    });
+  }, [params.id])
+  
 // how do I access individual author from redux? 
 
   return (
