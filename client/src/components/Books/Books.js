@@ -1,8 +1,9 @@
 
 // import PropTypes from 'prop-types' TODO
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import SearchBar from '../../SearchBar';
+import { fetchBooks } from '../../slices/search';
 
 import BookCard from './BookCard';
 import FeaturedBooks from './FeaturedBooks';
@@ -11,38 +12,26 @@ import FeaturedBooks from './FeaturedBooks';
 // offset pagination
 
 function Books() {
-  const [books, setBooks] = useState([]);
-  const [cursor, setCursor] = useState();
-
-  // fetching data
-  const fetchBooks = (cursor = undefined) => {
-    axios.get("/books",  { params: { limit: 10, cursor } })
-    .then((res) => {
-      console.log('books >>>>', res.data)
-      setBooks((state) => {
-        return [ ...state, ...res.data]
-      });
-      setCursor(res.data[res.data.length - 1].id);
-    });
-  }
+  const dispatch = useDispatch();
+  const filteredBooks = useSelector(state => state.search.filteredBooks);
   
   useEffect(() => {
-    fetchBooks();
+    dispatch(fetchBooks());
   }, []);
 
-    const renderBooks = () => {
-      const ary = [[]]
-      books.forEach((book, index) => {       
-        ary[ary.length - 1].push(<BookCard key={book.id} book={book} />)
-        if ((index + 1) % 5 === 0) {
-          ary.push([])
-        }
-      })
-      return ary
-    }
+  const renderBooks = () => {
+    const ary = [[]]
+    filteredBooks.forEach((book, index) => {       
+      ary[ary.length - 1].push(<BookCard key={book.id} book={book} />)
+      if ((index + 1) % 5 === 0) {
+        ary.push([])
+      }
+    })
+    return ary
+  }
 
   const onLoadMore = () => {
-    fetchBooks(cursor)
+    dispatch(fetchBooks(true))
   }
 
   return (

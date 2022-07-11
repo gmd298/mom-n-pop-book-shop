@@ -11,7 +11,8 @@ class BooksController < ApplicationController
       render json: featured
     else
       books = Book.custom_order(:id).limit(params[:limit])
-      books = books.where("id < ?", params[:cursor]) if params[:cursor]
+      books = books.where("id > ?", params[:cursor]) if params[:cursor]
+      books = books.where('title LIKE ?', '%' + params[:search] + '%') if params[:search]
       render json: books
     end
   end

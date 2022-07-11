@@ -6,6 +6,6 @@ class Book < ApplicationRecord
   has_many :genres, through: :book_genres
 
   def self.custom_order(column_name)
-    self.order(column_name => :desc)
+    self.order(column_name => :asc)
   end
 end

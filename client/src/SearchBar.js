@@ -1,30 +1,17 @@
-import React, {useState} from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { setSearch, fetchBooks } from './slices/search'
 
 function SearchBar() {
-  const [listings, setListings] = useState([])
-  const [search, setSearch] = useState("")
+  const dispatch = useDispatch();
+  const search = useSelector(state => state.search.search)
 
-  function searchResults() {
-    const filteredListings = listings.filter((listing) => {
-    return listing.description.toLowerCase().includes(search.toLowerCase())
-    })
-    setListings(filteredListings)
+  const handleOnChange = (event) => {
+    dispatch(setSearch(event.target.value));
+    dispatch(fetchBooks());
   }
-
-// How do I handle the search? Do I need to include multiple fetch requests? 
-// How can I use this in Books.js AND Authors.js?
-
-  // useEffect(() => {
-  //   fetch('http://localhost:6001/listings')
-  //   .then(response => response.json())
-  //   .then(data => setListings(data))
-  // }, [])
-
-  const handleOnChange = (event) => setSearch(event.target.value)
 
   function handleSubmit(event) {
     event.preventDefault();
-    searchResults();
   }
 
   return (
