@@ -11,7 +11,7 @@ const FeaturedBooks = () => {
   const featuredBooks = useSelector(state => state.featuredBooks.featuredBooks)
 
   useEffect(() => {
-    axios.get('/books/featured')
+    axios.get('/featured/books')
     .then((response) => {
       dispatch(setFeaturedBooks(response.data));
     });
