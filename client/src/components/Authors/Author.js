@@ -1,11 +1,9 @@
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import React, {useEffect, useState} from 'react'
-
 import SearchBar from '../../SearchBar';
 import FeaturedBooks from '../Books/FeaturedBooks';
 
-// do I need useSelector?
 
 function Author() {
   const params = useParams();
@@ -20,8 +18,7 @@ function Author() {
         setAuthor(res.data);
     });
   }, [params.id])
-  
-// how do I access individual author from redux? 
+
 
   return (
     <>

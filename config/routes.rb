@@ -1,13 +1,12 @@
 Rails.application.routes.draw do
+  resources :customers
   resources :stores
   resources :books 
   get '/:featured/books', to: 'books#index'
-  # do 
-  #   get :featured, on: :collection
-  # end
 
   resources :authors
   resources :genres, only: [:index, :show]
+  get '/customers', to: 'customers#create'
 
   get '*path',
     to: 'fallback#index',

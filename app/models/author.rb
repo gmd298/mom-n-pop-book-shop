@@ -9,4 +9,8 @@ class Author < ApplicationRecord
   # data.book_genres.map do |book_genre|
   #   book_genre.genre.name
   # end
+
+  def self.custom_order(column_name)
+    self.order(column_name => :asc)
+  end
 end

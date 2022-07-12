@@ -1,12 +1,6 @@
-
-// do I need useSelector?
-
 import { Link } from "react-router-dom"
 
 function AuthorCard({author}) {
-
-
-// how do I access individual author from redux? 
 
   return (
 

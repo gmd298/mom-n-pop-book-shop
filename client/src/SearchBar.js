@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux'
-import { setSearch, fetchBooks } from './slices/search'
+import { setSearch, fetchBooks, fetchAuthors } from './slices/search'
 
 function SearchBar() {
   const dispatch = useDispatch();
@@ -8,6 +8,8 @@ function SearchBar() {
   const handleOnChange = (event) => {
     dispatch(setSearch(event.target.value));
     dispatch(fetchBooks());
+    dispatch(setSearch());
+    // Need to learn how to handle this. fetchBooks() on Books and fetchAuthors() on Authors
   }
 
   function handleSubmit(event) {

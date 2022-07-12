@@ -19,7 +19,7 @@ function Profile() {
       setBooks(res.data);
     });
   }
-  //////////need to figure out the best way to add to wishlist and switch "Add To Wishlist" with "Delete"
+
   useEffect(() => {
     fetchBooks();
   }, []);

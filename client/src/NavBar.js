@@ -3,15 +3,11 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 function NavBar() {
-  const allBooks = useSelector(state => state.allBooks.allBooks)
 
   const featuredBooks = useSelector(state => state.featuredBooks.featuredBooks)
 
   return (
     <nav className="nav">
-      {/* <header>
-        <button onClick={handleLogout}>Logout</button>
-      </header> */}
       <Link to="/" className="site-title"> Mom'n Pop Book Shop </Link>
       
       <ul className="nav-list">

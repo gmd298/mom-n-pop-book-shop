@@ -1,37 +1,22 @@
-
-// import PropTypes from 'prop-types' TODO
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchAuthors } from '../../slices/search';
 
 import AuthorCard from './AuthorCard';
 import SearchBar from '../../SearchBar';
 import FeaturedBooks from '../Books/FeaturedBooks';
 
-// cursor pagination [6,5,4], [3,2,1] 
-// offset pagination
-
 function Authors() {
-  const [authors, setAuthors] = useState([]);
-  const [cursor, setCursor] = useState();
+  const dispatch = useDispatch();
+  const filteredAuthors= useSelector(state => state.search.filteredAuthors);
 
-  // fetching data
-  const fetchAuthors = (cursor = undefined) => {
-    axios.get("/authors",  { params: { limit: 10, cursor } })
-    .then((res) => {
-      setAuthors((state) => {
-        return [ ...state, ...res.data]
-      });
-      setCursor(res.data[res.data.length - 1].id);
-    });
-  }
-  
   useEffect(() => {
-    fetchAuthors();
+    dispatch(fetchAuthors());
   }, []);
 
     const renderAuthors = () => {
       const ary = [[]]
-      authors.forEach((author, index) => {       
+      filteredAuthors.forEach((author, index) => {       
         ary[ary.length - 1].push(<AuthorCard key={author.id} author={author} />)
         if ((index + 1) % 5 === 0) {
           ary.push([])
@@ -41,14 +26,14 @@ function Authors() {
     }
 
   const onLoadMore = () => {
-    fetchAuthors(cursor)
+    dispatchEvent(fetchAuthors(true));
   }
 
   return (
     <>
       <div>
         <h1>
-          Book Shop
+          Authors
         </h1>
         <SearchBar />
         <div >
@@ -63,6 +48,5 @@ function Authors() {
   )
 }
 
-// Books.propTypes = {} // todo
 
 export default Authors

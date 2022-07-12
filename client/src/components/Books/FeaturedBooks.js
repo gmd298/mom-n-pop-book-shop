@@ -3,7 +3,9 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { setFeaturedBooks } from '../../slices/featuredBooks'
 import BookCard from './BookCard'
-// import PropTypes from 'prop-types'
+
+
+// fetching the featured books from redux and maping them on the book cards
 
 const FeaturedBooks = () => {
   const dispatch = useDispatch();

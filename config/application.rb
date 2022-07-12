@@ -40,5 +40,21 @@ module Capstone
     config.middleware.use ActionDispatch::Session::CookieStore
 
     config.action_dispatch.cookies_same_site_protection = :strict
+
+    config.active_job.queue_adapter = :delayed_job
+
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.default_url_options = { host: Rails.env.development? ? 'localhost:3000' : 'HOUZZ.com' }
+
+    # SMTP settings for gmail
+    config.action_mailer.smtp_settings = {
+      :address              => "smtp.mailgun.org",
+      :port                 => 587,
+      :user_name            => "postmaster@sandbox9d20f401842a49f5889f1e3fcd7fd43e.mailgun.org",
+      :password             => "8cee1d2fd552153a78112fc4fed75adf-18e06deb-e9a6ff38",
+      :authentication       => "plain",
+      domain: 'sandbox9d20f401842a49f5889f1e3fcd7fd43e.mailgun.org'
+      # :enable_starttls_auto => true
+    }
   end
 end

@@ -1,5 +1,3 @@
-
-// import PropTypes from 'prop-types' TODO
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import SearchBar from '../../SearchBar';
@@ -8,17 +6,17 @@ import { fetchBooks } from '../../slices/search';
 import BookCard from './BookCard';
 import FeaturedBooks from './FeaturedBooks';
 
-// cursor pagination [6,5,4], [3,2,1] 
-// offset pagination
 
 function Books() {
   const dispatch = useDispatch();
   const filteredBooks = useSelector(state => state.search.filteredBooks);
   
+// dependency says it needs dispatch, but it works without it
   useEffect(() => {
     dispatch(fetchBooks());
   }, []);
 
+// sets up the pagination and passes the filteredBooks data from redux to book cards
   const renderBooks = () => {
     const ary = [[]]
     filteredBooks.forEach((book, index) => {       
@@ -53,6 +51,5 @@ function Books() {
   )
 }
 
-// Books.propTypes = {} // todo
 
 export default Books
