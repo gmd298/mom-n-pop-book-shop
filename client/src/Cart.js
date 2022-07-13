@@ -25,6 +25,12 @@ function Cart() {
         zip,
       })
     }).then((r) => console.log(r))
+    setFirstName('')
+    setLastName('')
+    setEmail('') 
+    setAddress('') 
+    setCity('')
+    setZip('')
   }
 
 
