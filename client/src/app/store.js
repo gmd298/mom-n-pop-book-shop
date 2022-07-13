@@ -7,6 +7,7 @@ import allBooksReducer from "../slices/allBooks";
 import searchReducer from "../slices/search";
 import filteredBooksReducer from "../slices/filteredBooks";
 import filteredAuthorsReducer from "../slices/filteredAuthors";
+import cartReducer from "../slices/cart"
 
 export const store = configureStore({
   reducer: {
@@ -16,6 +17,7 @@ export const store = configureStore({
     featuredBooks: featuredBooksReducer,
     allBooks: allBooksReducer,
     search: searchReducer,
+    cart: cartReducer,
     filteredBooks: filteredBooksReducer,
     filteredAuthors: filteredAuthorsReducer
   }

@@ -27,7 +27,7 @@ function Profile() {
     const renderWishlist = () => {
       const ary = [[]]
       books.forEach((book, index) => {       
-        ary[ary.length - 1].push(<BookCard key={book.id} book={book} />)
+        ary[ary.length - 1].push(<BookCard key={book.id} book={book} author={book.author} />)
         if ((index + 1) % 5 === 0) {
           ary.push([])
         }

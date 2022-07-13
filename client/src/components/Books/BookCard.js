@@ -1,15 +1,15 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { addBook } from '../../slices/cart';
 
-function BookCard({ book, handleDelete }) {
+function BookCard({ book, author }) {
+  const dispatch = useDispatch()
 
   const onClick = (e) => {
-    const button = e.target;
-    button.disabled = true;
-    handleDelete(book);
+    e.preventDefault();
+    dispatch(addBook(book))
   }
-
-
 
   return (
     <Link to={`/books/${book.id}`}>
@@ -17,12 +17,12 @@ function BookCard({ book, handleDelete }) {
         <div className="card-content">
           <h3 className="card-title">{book.title}</h3>
           <img src={book.image} alt={book.image} className="card-image"/>
-          <h4 className="card-author">{book.author.name}</h4>
+          <h4 className="card-author">{author.name}</h4>
           <p className="card-details">{book.description}</p>
-          <button className="card-button" type='submit' onClick={onClick}>Add To Cart</button>
+          <button className="card-button" type='button' onClick={onClick}>Add To Cart</button>
         </div>
       </div>
-      </Link>
+    </Link>
   )
 }
 

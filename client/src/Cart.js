@@ -1,13 +1,19 @@
 import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 import FeaturedBooks from './components/Books/FeaturedBooks';
+import { clearCart, removeBook } from './slices/cart';
 
 function Cart() {
+  const dispatch = useDispatch()
+
   const [first_name, setFirstName] = useState('')
   const [last_name, setLastName] = useState('')
   const [email, setEmail] = useState('')
   const [address, setAddress] = useState('')
   const [city, setCity] = useState('')
   const [zip, setZip] = useState('')
+
+  const cartBooks = useSelector(state => state.cart.cartBooks)
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -24,21 +30,35 @@ function Cart() {
         city,
         zip,
       })
-    }).then((r) => console.log(r))
-    setFirstName('')
-    setLastName('')
-    setEmail('') 
-    setAddress('') 
-    setCity('')
-    setZip('')
+    }).then((r) => {
+      console.log(r)
+      setFirstName('')
+      setLastName('')
+      setEmail('') 
+      setAddress('') 
+      setCity('')
+      setZip('') 
+      dispatch(clearCart())
+    })
   }
 
+  const onRemove = (id) => {
+    dispatch(removeBook(id))
+  }
+
+  // Need a button to remove the book from the list
 
   return (
     <>
       <h2>Cart</h2>
       <div>
-        put selected books here
+        {Object.values(cartBooks).map(({ book, quantity }) => {
+          return <div>
+            <div>Name: {book.title}</div>
+            <div>Quantity: {quantity}</div>
+            <div><button onClick={() => onRemove(book.id)} type="button">Remove</button></div>
+          </div>
+        })}
       </div>
       <form onSubmit={handleSubmit}>
       <div>

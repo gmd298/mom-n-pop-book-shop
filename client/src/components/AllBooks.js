@@ -20,7 +20,7 @@ const AllBooks = () => {
     <>
       <div className="card-container">
         {allBooks.map(book => {
-          return <BookCard key={book.id} book={book} />
+          return <BookCard key={book.id} book={book} author={book.author} />
         })}
       </div>
     </>

@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import React, {useEffect, useState} from 'react'
 import SearchBar from '../../SearchBar';
 import FeaturedBooks from '../Books/FeaturedBooks';
+import BookCard from '../Books/BookCard';
 
 
 function Author() {
@@ -20,6 +21,9 @@ function Author() {
   }, [params.id])
 
 
+  console.log('author', author);
+
+
   return (
     <>
     <div>
@@ -34,6 +38,11 @@ function Author() {
           <p className="card-details">{author.bio}</p>
         </div>
         {/* <p>{statusMessage}</p> */}
+      </div>
+      <div>
+        {author.books?.map((book) => {
+          return <BookCard book={book} key={book.id} author={author} />
+        })}
       </div>
       <FeaturedBooks />
     </div>
