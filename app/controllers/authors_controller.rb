@@ -1,7 +1,7 @@
 class AuthorsController < ApplicationController
 
   def index 
-      authors = Author.custom_order(:id).limit(params[:limit])
+      authors = Author.alphabetize(:name).limit(params[:limit])
       authors = authors.where("id > ?", params[:cursor]) if params[:cursor]
       authors = authors.where('name LIKE ?', '%' + params[:search] + '%') if params[:search]
       render json: authors

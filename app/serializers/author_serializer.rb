@@ -3,5 +3,4 @@ class AuthorSerializer < ActiveModel::Serializer
 
   has_many :books
   has_many :stores, through: :books
-  # has_many :genres <<
 end

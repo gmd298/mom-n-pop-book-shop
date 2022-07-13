@@ -10,7 +10,7 @@ class Author < ApplicationRecord
   #   book_genre.genre.name
   # end
 
-  def self.custom_order(column_name)
+  def self.alphabetize(column_name)
     self.order(column_name => :asc)
   end
 end
