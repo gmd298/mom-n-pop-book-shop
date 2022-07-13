@@ -8,6 +8,7 @@ function SearchBar() {
   const handleOnChange = (event) => {
     dispatch(setSearch(event.target.value));
     dispatch(fetchBooks());
+    dispatch(fetchAuthors());
     dispatch(setSearch());
     // Need to learn how to handle this. fetchBooks() on Books and fetchAuthors() on Authors
   }

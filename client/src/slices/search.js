@@ -117,10 +117,10 @@ const searchSlice = createSlice({
         state.status = 'succeeded'
 
         if (isLoadMore) {
-          console.log("LOAD MORE");                                 // loading more books
+          console.log("LOAD MORE");                                 // loading more authors
           state.filteredAuthors = state.filteredAuthors.concat(authors);
         } else {
-          console.log("REPLACE");                                   // searching for books
+          console.log("REPLACE");                                   // searching for authors
           state.filteredAuthors = authors;
         }
         state.authorsCursor = authors[authors.length - 1].id;             // set the place of the pagination (cursor position)

@@ -26,7 +26,7 @@ function Authors() {
     }
 
   const onLoadMore = () => {
-    dispatchEvent(fetchAuthors(true));
+    dispatch(fetchAuthors(true));
   }
 
   return (
