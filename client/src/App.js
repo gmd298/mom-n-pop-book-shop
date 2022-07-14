@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import NavBar from "./NavBar";
-import Profile from "./Profile";
+// import Profile from "./Profile";
 import Home from "./Home";
 import Books from "./components/Books/Books";
 import Cart from "./Cart";
@@ -24,7 +24,7 @@ function App() {
           <Route exact path= {"/authors"} element= {<Authors />} />
           <Route exact path= {"/authors/:id"} element= {<Author />} />
           
-          <Route exact path= {"/profile"} element= {<Profile />} />
+          {/* <Route exact path= {"/profile"} element= {<Profile />} /> */}
           <Route exact path= {"/cart"} element= {<Cart />} />
           <Route exact path= {"/allbooks"} element= {<AllBooks />} />
         </Routes>

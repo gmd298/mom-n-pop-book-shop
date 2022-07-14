@@ -99,7 +99,8 @@ const searchSlice = createSlice({
           console.log("REPLACE");                                   // searching for books
           state.filteredBooks = books;
         }
-        state.booksCursor = books[books.length - 1].id;             // set the place of the pagination (cursor position)
+        const previousBook = books[books.length - 1];
+        state.booksCursor = (previousBook && previousBook.id) || 0; ;             // set the place of the pagination (cursor position)
       })
       .addCase(fetchBooks.rejected, (state, action) => {
         state.status = 'failed'

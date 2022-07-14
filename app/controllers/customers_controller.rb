@@ -2,6 +2,7 @@ class CustomersController < ApplicationController
 
   # RAILS_ENV=development bin/delayed_job start
   # mailcatcher .. visit http://127.0.0.1:1080/ to see email
+  # when rails server doesnt work properly "sudo service postgresql start"
 
   def create 
     customer = Customer.create!(customer_params)

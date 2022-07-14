@@ -1,38 +1,52 @@
-
+body {
+  background-color: rgb(210, 232, 255);
+}
 
 .App {
   font-family: sans-serif;
   text-align: center;
   width: 100vw;
-  min-height: 5000vh;
   background-color: rgb(210, 232, 255);
 }
+
 .nav {
   display: flex;
+  min-width: 100%;
+  background-color: rgb(186, 219, 253);
 }
+
+
 .site-title {
-  padding: 50px;
+  /* padding: 50px; */
   transition: transform .2s;
-  width: 200px;
-  height: 100px;
+  /* width: 200px;
+  height: 100px; */
   margin: 0 auto;
 }
+
 .site-title:hover{
   transform: scale(1.5);
 }
+
 .nav-list {
   display: flex;
   align-items: center;
-  max-width: 720px;
+  width: 100%;
   list-style: none;
 }
+
 .nav-item {
-  width: 125px;
+  flex: 1;
   height: 50px;
   transition: background-position-x 0.9s linear;
   text-align: center;
   transition: transform .2s;
 }
+
+.left-nav-item {
+  flex: 4;
+}
+
 .nav-item:hover{
   transform: scale(1.5);
 }

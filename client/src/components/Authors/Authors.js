@@ -37,7 +37,7 @@ function Authors() {
         </h1>
         <SearchBar />
         <div >
-        { renderAuthors().map(authorAry => {
+        { renderAuthors().map(authorAry=> {
           return <div className="card-container">{authorAry}</div>
         })  }
         </div>

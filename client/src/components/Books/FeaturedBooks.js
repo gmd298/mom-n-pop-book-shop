@@ -22,7 +22,7 @@ const FeaturedBooks = () => {
   return (
     <>
       <h2 className='featured-books'>FeaturedBooks</h2>
-      <div className="card-container">
+      <div className="card-container" id="featured">
         {featuredBooks.map(book => {
           return <BookCard key={book.id} book={book} author={book.author} />
         })}
